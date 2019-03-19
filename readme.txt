@@ -21,7 +21,11 @@
 	
 	4.增加自动请求api接口，刷新cdn的功能。
 
+	5.修改获取相对路径为程序启动时的绝对路径
+	 dirname, filename = os.path.split(os.path.abspath(__file__))
 
+	6.修改字符串处理时的字符集转换，直接写死为utf8
+	 res = urllib.quote(str.decode('UTF-8').encode('utf8'), '')
 示例：
 	支持多文件刷新，用\n分割
 	python cdn.py Action=RefreshObjectCaches ObjectType=File 'ObjectPath=https://wywl.0256.cn/h5/parkmall/index.html\nhttps://wywl.0256.cn/h5/petroleumCard/html/chai.html'

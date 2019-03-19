@@ -17,14 +17,18 @@ import traceback
 access_key_id = '';
 access_key_secret = '';
 cdn_server_address = 'https://cdn.aliyuncs.com'
-CONFIGFILE = os.getcwd() + '/aliyun.ini'
+dirname, filename = os.path.split(os.path.abspath(__file__))
+#print(dirname,filename)
+#CONFIGFILE = os.getcwd() + '/aliyun.ini'
+CONFIGFILE =  dirname + '/aliyun.ini'
 CONFIGSECTION = 'Credentials'
 cmdlist = '''
 接口说明请参照pdf文档
 '''
 
 def percent_encode(str):
-    res = urllib.quote(str.decode(sys.stdin.encoding).encode('utf8'), '')
+    # res = urllib.quote(str.decode(sys.stdin.encoding).encode('utf8'), '')
+    res = urllib.quote(str.decode('UTF-8').encode('utf8'), '')
     res = res.replace('+', '%20')
     res = res.replace('*', '%2A')
     res = res.replace('%7E', '~')
